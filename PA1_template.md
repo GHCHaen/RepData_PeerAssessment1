@@ -140,7 +140,8 @@ print(median(daily_steps$total_steps))
 
 ## What is the average daily activity pattern?
 
-Create a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis):
+1. Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
+
 
 ```r
 daily_activity <- step_data %>%
@@ -156,6 +157,19 @@ with(daily_activity, plot(time, interval_step_average, type="l",
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
+2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+
+
+```r
+print(paste("Interval with maximum number of steps on average:",
+            as.character(daily_activity[daily_activity$interval_step_average ==
+            max(daily_activity$interval_step_average), ]$time, "%H%M")))
+```
+
+```
+## [1] "Interval with maximum number of steps on average: 0835"
+```
 
 ## Imputing missing values
 
@@ -222,7 +236,7 @@ with(daily_steps_imputed, hist(total_steps, breaks = 10, xlab = "Total Steps",
                 col = "slategrey"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 ```r
 ## Output the mean of the total number of steps
@@ -304,4 +318,4 @@ with(weekday_activity, plot(time, interval_step_average, type="l",
      xlab = "Time", ylab = "Average Number of Steps"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
